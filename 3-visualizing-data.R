@@ -71,7 +71,7 @@ ggplot(
     scale_fill_manual(values = col.palette, name = 'Region') +
     scale_y_continuous(breaks = seq(0, 10, by = 2)) +
     labs(x = '%', y = 'Number of Individuals',
-         title = 'Frequency of Individuals by % of Messages Sent\nDuring Business Hours')
+         title = 'Frequency of Individuals by % of Messages Sent\nDuring Local Business Hours')
 ggsave(filename = paste0(plots.dir, '/plot-msgs-biz-hours.png'), width = 6,
        height = 4, units = 'in', scale = 1.2)
 
