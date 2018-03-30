@@ -67,7 +67,7 @@ msgs <- data.frame(
     subtype = unlist(ExtractElement(msgs.list, 'subtype')),
     stringsAsFactors = FALSE) %>%
     mutate(bot_message_user_name = FormatNames(bot_message_user_name)) %>%
-    left_join(select(distinct(add.user.info, user_id), user_id, full_name),
+    left_join(select(distinct(add.user.info, user_id, .keep_all = TRUE), user_id, full_name),
               c('bot_message_user_name' = 'full_name')) %>%
     replace_na(list(subtype = '')) %>%
     mutate(
@@ -77,7 +77,7 @@ msgs <- data.frame(
             gsub('<|@|\\|', '', str_extract(text, '^<@.*?\\|')), user_id)) %>%
     select(-user_id.x, -user_id.y) %>%
     left_join(distinct(users, user_id), 'user_id') %>%
-    left_join(select(distinct(add.user.info, user_id), -user_name), 'user_id') %>%
+    left_join(select(distinct(add.user.info, user_id, .keep_all = TRUE), -user_name), 'user_id') %>%
     filter(!(
         subtype %in% drop.subtypes | user_id %in% bots | is_polar_employee == FALSE |
             (!(bot_message_user_name %in% unique(add.user.info$full_name)) &
