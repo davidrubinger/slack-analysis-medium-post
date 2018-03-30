@@ -144,7 +144,7 @@ reactions.given <- data.frame(
 #### Aggregating by User####
 # By user
 msgs.user <- msgs %>%
-    group_by(user_id, user_name, gender, is_engineer) %>%
+    group_by(user_id, first_name, last_name, gender, is_engineer) %>%
     summarize(n_msgs = n(), avg_n_words = median(n_words, na.rm = TRUE)) %>%
     left_join(reactions.given, 'user_id') %>%
     replace_na(list(n_reactions_given = 0))
