@@ -1,5 +1,5 @@
 #### Loading Packages ####
-library(rjson)
+library(jsonlite)
 
 #### Unzipping Slack Data ####
 data.dir <- 'data'
@@ -24,7 +24,7 @@ for (c in 1:length(load.channels)) {  # looping through channels
         
         if (date.file %in% list.files(load.channel.folder)) {  # if file exists
             msgs.file <- fromJSON(
-                file = paste0(load.channel.folder, date.file))
+                txt = paste0(load.channel.folder, date.file))
             msgs.file <- lapply(msgs.file, function (x) {
                 x$channel <- load.channels[c]
                 x
@@ -35,7 +35,7 @@ for (c in 1:length(load.channels)) {  # looping through channels
 }
 
 # Loading user info
-users.list <- fromJSON(file = paste(data.dir, 'users.json', sep = '/'))
+users.list <- fromJSON(txt = paste(data.dir, 'users.json', sep = '/'))
 
 #### Loading Supplementary Data ####
 # Loading proportion of messages by channel type
