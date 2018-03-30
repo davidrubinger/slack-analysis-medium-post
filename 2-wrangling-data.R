@@ -93,20 +93,25 @@ msgs <- data.frame(
                              'toronto', location),
            location = ifelse(user_id == 'U035AKULP' & date_tor < '2015-11-12',
                              'toronto', location),
-           is_biz_day_tor = is.bizday(date_tor, Calendar(
-               holidays[holidays$location %in% c('global', 'toronto'), 'date'],
+           is_biz_day_tor = is.bizday(date_tor, create.calendar(
+               "calendar_tor",
+               holidays = holidays[holidays$location %in% c('global', 'toronto'), 'date'],
                load.start.date, load.end.date, weekdays = c('saturday', 'sunday'))),
-           is_biz_day_nyc = is.bizday(date_tor, Calendar(
-               holidays[holidays$location %in% c('global', 'new_york'), 'date'],
+           is_biz_day_nyc = is.bizday(date_tor, create.calendar(
+               "calendar_nyc",
+               holidays = holidays[holidays$location %in% c('global', 'new_york'), 'date'],
                load.start.date, load.end.date, weekdays = c('saturday', 'sunday'))),
-           is_biz_day_lon = is.bizday(date_lon, Calendar(
-               holidays[holidays$location %in% c('global', 'uk', 'london'), 'date'],
+           is_biz_day_lon = is.bizday(date_lon, create.calendar(
+               "calendar_lon",
+               holidays = holidays[holidays$location %in% c('global', 'uk', 'london'), 'date'],
                load.start.date, load.end.date, weekdays = c('saturday', 'sunday'))),
-           is_biz_day_gla = is.bizday(date_lon, Calendar(
-               holidays[holidays$location %in% c('global', 'uk', 'glasgow'), 'date'],
+           is_biz_day_gla = is.bizday(date_lon, create.calendar(
+               "calendar_gla",
+               holidays = holidays[holidays$location %in% c('global', 'uk', 'glasgow'), 'date'],
                load.start.date, load.end.date, weekdays = c('saturday', 'sunday'))),
-           is_biz_day_syd = is.bizday(date_syd, Calendar(
-               holidays[holidays$location %in% c('global', 'sydney'), 'date'],
+           is_biz_day_syd = is.bizday(date_syd, create.calendar(
+               "calendar_syd",
+               holidays = holidays[holidays$location %in% c('global', 'sydney'), 'date'],
                load.start.date, load.end.date, weekdays = c('saturday', 'sunday'))),
            local_hr = ifelse(
                location %in% c('toronto', 'new_york', 'washington'),
