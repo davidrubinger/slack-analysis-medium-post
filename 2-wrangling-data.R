@@ -79,7 +79,7 @@ msgs <- data.frame(
     left_join(distinct(users, user_id), 'user_id') %>%
     left_join(select(distinct(add.user.info, user_id, .keep_all = TRUE), -user_name), 'user_id') %>%
     filter(!(
-        subtype %in% drop.subtypes | user_id %in% bots | is_polar_employee == FALSE |
+        subtype %in% drop.subtypes | user_id %in% bots |
             (!(bot_message_user_name %in% unique(add.user.info$full_name)) &
                  subtype == 'bot_message'))) %>%
     mutate(dt = as.numeric(gsub('\\..*', '', dt)),
