@@ -35,10 +35,10 @@ FormatNames <- function (names) {
 
 #### Wrangling User Data ####
 users <- data.frame(
-    user_id = unlist(ExtractElement(users.list, 'id')),
-    user_name = unlist(ExtractElement(users.list, 'name')),
-    is_bot = unlist(ExtractElement(users.list, 'is_bot')),
-    email = unlist(ExtractElement(ExtractElement(users.list, 'profile'), 'email')),
+    user_id = users.list$id,
+    user_name = users.list$name,
+    is_bot = users.list$is_bot,
+    email = users.list$profile$email,
     stringsAsFactors = FALSE) %>%
     mutate(is_bot = ifelse(is.na(is_bot), FALSE, is_bot),
            is_polar_employee = grepl('polar', email))
