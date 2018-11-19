@@ -1,5 +1,8 @@
 # Analysis Behind Medium Post
 
+Related post:
+[4 Things I Learned About Workplace Communication from Slack](https://medium.com/@david.rubinger/4-things-i-learned-about-workplace-communication-from-slack-81329a83ceba)
+
 ### Getting Data
 
 ###### Slack
